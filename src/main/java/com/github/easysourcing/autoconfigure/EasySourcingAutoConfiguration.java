@@ -59,7 +59,6 @@ public class EasySourcingAutoConfiguration {
         .applicationId(easySourcingProperties.getApplicationId())
         .replicas(easySourcingProperties.getReplicas())
         .partitions(easySourcingProperties.getPartitions())
-        .cleanupOnStop(easySourcingProperties.isCleanUpOnStop())
         .build();
   }
 
