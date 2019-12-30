@@ -14,7 +14,6 @@
     <name>easysourcing-spring-boot-starter</name>
     <description>Spring Boot starter for EasySourcing library</description>
 
-
     <properties>
         <java.version>1.8</java.version>
     </properties>
