@@ -10,5 +10,4 @@ public class EasySourcingProperties {
   private String bootstrapServers;
   private int partitions = 1;
   private int replicas = 1;
-  private boolean cleanUpOnStop = false;
 }
