@@ -4,7 +4,7 @@ import com.github.easysourcing.Config;
 import com.github.easysourcing.EasySourcing;
 import com.github.easysourcing.EasySourcingBuilder;
 import com.github.easysourcing.GatewayBuilder;
-import com.github.easysourcing.autoconfigure.annotations.Handler;
+import com.github.easysourcing.message.annotations.Handler;
 import com.github.easysourcing.message.commands.CommandGateway;
 import com.github.easysourcing.message.events.EventGateway;
 import lombok.extern.slf4j.Slf4j;
