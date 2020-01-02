@@ -1,1 +1,8 @@
-Spring Boot starter for EasySourcing
+## Spring Boot starter for EasySourcing
+
+[Documentation](https://alikelleci.github.io/easysourcing)
+
+
+
+## License
+GNU LESSER GENERAL PUBLIC LICENSE, VERSION 3 
