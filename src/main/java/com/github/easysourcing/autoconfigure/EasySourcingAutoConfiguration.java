@@ -28,6 +28,7 @@ public class EasySourcingAutoConfiguration {
   public Config config(EasySourcingProperties easySourcingProperties) {
     return Config.builder()
         .bootstrapServers(easySourcingProperties.getBootstrapServers())
+        .securityProtocol(easySourcingProperties.getSecurityProtocol())
         .applicationId(easySourcingProperties.getApplicationId())
         .replicas(easySourcingProperties.getReplicas())
         .partitions(easySourcingProperties.getPartitions())
