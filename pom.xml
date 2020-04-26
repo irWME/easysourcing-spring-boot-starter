@@ -11,7 +11,7 @@
     </parent>
     <groupId>com.github.alikelleci</groupId>
     <artifactId>easysourcing-spring-boot-starter</artifactId>
-    <version>0.4.8</version>
+    <version>0.4.10</version>
     <name>easysourcing-spring-boot-starter</name>
     <description>Spring Boot starter for EasySourcing library</description>
 
