@@ -11,4 +11,5 @@ public class EasySourcingProperties {
   private int partitions = 1;
   private int replicas = 1;
   private String securityProtocol = "PLAINTEXT";
+  private final boolean frequentCommits = false;
 }
