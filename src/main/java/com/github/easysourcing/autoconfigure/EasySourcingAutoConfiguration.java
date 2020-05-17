@@ -33,6 +33,11 @@ public class EasySourcingAutoConfiguration {
         .partitions(easySourcingProperties.getPartitions())
         .securityProtocol(easySourcingProperties.getSecurityProtocol())
         .frequentCommits(easySourcingProperties.isFrequentCommits())
+
+        .commandsRetention(easySourcingProperties.getCommandsRetention())
+        .resultsRetention(easySourcingProperties.getResultsRetention())
+        .snapshotsRetention(easySourcingProperties.getSnapshotsRetention())
+        .eventsRetention(easySourcingProperties.getEventsRetention())
         .build();
   }
 
