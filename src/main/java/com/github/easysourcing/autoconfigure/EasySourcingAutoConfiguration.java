@@ -4,25 +4,17 @@ import com.github.easysourcing.Config;
 import com.github.easysourcing.EasySourcing;
 import com.github.easysourcing.EasySourcingBuilder;
 import com.github.easysourcing.GatewayBuilder;
-import com.github.easysourcing.messages.annotations.Handler;
 import com.github.easysourcing.messages.commands.CommandGateway;
 import com.github.easysourcing.messages.events.EventGateway;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Map;
 
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(EasySourcingProperties.class)
 public class EasySourcingAutoConfiguration {
-
-  @Autowired
-  private ApplicationContext applicationContext;
 
   @Bean
   public Config config(EasySourcingProperties easySourcingProperties) {
@@ -42,16 +34,19 @@ public class EasySourcingAutoConfiguration {
   }
 
   @Bean
-  public EasySourcing easySourcing(Config config) {
-    Map<String, Object> beans = applicationContext.getBeansWithAnnotation(Handler.class);
-
-    EasySourcingBuilder builder = new EasySourcingBuilder()
+  public EasySourcingBuilder easySourcingBuilder(Config config) {
+    return new EasySourcingBuilder()
         .withConfig(config);
+  }
 
-    beans.values()
-        .forEach(builder::registerHandler);
+  @Bean
+  public EasySourcingHandlerBeanPostProcessor handlerAnnotationProcessor(EasySourcingBuilder easySourcingBuilder) {
+    return new EasySourcingHandlerBeanPostProcessor(easySourcingBuilder);
+  }
 
-    EasySourcing app = builder.build();
+  @Bean
+  public EasySourcing easySourcing(EasySourcingBuilder easySourcingBuilder) {
+    EasySourcing app = easySourcingBuilder.build();
     app.start();
 
     return app;
