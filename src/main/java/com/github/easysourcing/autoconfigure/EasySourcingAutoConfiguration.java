@@ -50,10 +50,11 @@ public class EasySourcingAutoConfiguration {
 
   @Bean
   public EasySourcing easySourcing(EasySourcingBuilder easySourcingBuilder, ApplicationContext applicationContext) {
-    EasySourcing app = easySourcingBuilder.build();
+    EasySourcing app = null;
 
     Map<String, Object> beans = applicationContext.getBeansWithAnnotation(EnableEasySourcing.class);
     if (!beans.isEmpty()) {
+      app = easySourcingBuilder.build();
       app.start();
     }
 
