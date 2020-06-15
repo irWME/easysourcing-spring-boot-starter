@@ -4,12 +4,16 @@ import com.github.easysourcing.Config;
 import com.github.easysourcing.EasySourcing;
 import com.github.easysourcing.EasySourcingBuilder;
 import com.github.easysourcing.GatewayBuilder;
+import com.github.easysourcing.autoconfigure.annotations.EnableEasySourcing;
 import com.github.easysourcing.messages.commands.CommandGateway;
 import com.github.easysourcing.messages.events.EventGateway;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Map;
 
 @Slf4j
 @Configuration
@@ -45,9 +49,13 @@ public class EasySourcingAutoConfiguration {
   }
 
   @Bean
-  public EasySourcing easySourcing(EasySourcingBuilder easySourcingBuilder) {
+  public EasySourcing easySourcing(EasySourcingBuilder easySourcingBuilder, ApplicationContext applicationContext) {
     EasySourcing app = easySourcingBuilder.build();
-    app.start();
+
+    Map<String, Object> beans = applicationContext.getBeansWithAnnotation(EnableEasySourcing.class);
+    if (!beans.isEmpty()) {
+      app.start();
+    }
 
     return app;
   }
