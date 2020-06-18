@@ -12,6 +12,7 @@ public class EasySourcingProperties {
   private int replicas = 1;
   private String securityProtocol = "PLAINTEXT";
   private boolean frequentCommits = false;
+  private boolean isDeleteLocalStateOnStartup = false;
 
   private long commandsRetention = 604800000; // 7 days
   private long resultsRetention = 604800000; // 7 days
