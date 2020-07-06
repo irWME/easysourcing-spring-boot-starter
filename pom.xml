@@ -11,7 +11,7 @@
     </parent>
     <groupId>com.github.alikelleci</groupId>
     <artifactId>easysourcing-spring-boot-starter</artifactId>
-    <version>0.9.16</version>
+    <version>0.9.17</version>
     <name>easysourcing-spring-boot-starter</name>
     <description>Spring Boot starter for EasySourcing library</description>
 
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>com.github.alikelleci</groupId>
             <artifactId>easysourcing</artifactId>
-            <version>0.9.16</version>
+            <version>0.9.17</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
