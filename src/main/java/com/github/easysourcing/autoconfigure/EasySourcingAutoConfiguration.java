@@ -18,8 +18,6 @@ import org.springframework.context.event.EventListener;
 @EnableConfigurationProperties(EasySourcingProperties.class)
 public class EasySourcingAutoConfiguration {
 
-  private EasySourcing app;
-
   @Bean
   public Config config(EasySourcingProperties easySourcingProperties) {
     return Config.builder()
@@ -51,8 +49,7 @@ public class EasySourcingAutoConfiguration {
 
   @Bean
   public EasySourcing easySourcing(EasySourcingBuilder easySourcingBuilder) {
-    app = easySourcingBuilder.build();
-    return app;
+    return easySourcingBuilder.build();
   }
 
   @Bean
@@ -69,8 +66,9 @@ public class EasySourcingAutoConfiguration {
         .eventGateway();
   }
 
-  @EventListener(ApplicationReadyEvent.class)
-  public void handle() {
+  @EventListener
+  public void handleApplicationReadyEvent(ApplicationReadyEvent event) {
+    EasySourcing app = event.getApplicationContext().getBean(EasySourcing.class);
     app.start();
   }
 
