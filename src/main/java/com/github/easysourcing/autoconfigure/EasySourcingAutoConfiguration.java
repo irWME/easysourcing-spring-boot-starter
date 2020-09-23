@@ -7,14 +7,18 @@ import com.github.easysourcing.GatewayBuilder;
 import com.github.easysourcing.messages.commands.CommandGateway;
 import com.github.easysourcing.messages.events.EventGateway;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.event.EventListener;
 
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(EasySourcingProperties.class)
 public class EasySourcingAutoConfiguration {
+
+  private EasySourcing app;
 
   @Bean
   public Config config(EasySourcingProperties easySourcingProperties) {
@@ -47,9 +51,7 @@ public class EasySourcingAutoConfiguration {
 
   @Bean
   public EasySourcing easySourcing(EasySourcingBuilder easySourcingBuilder) {
-    EasySourcing app = easySourcingBuilder.build();
-    app.start();
-
+    app = easySourcingBuilder.build();
     return app;
   }
 
@@ -65,6 +67,11 @@ public class EasySourcingAutoConfiguration {
     return new GatewayBuilder()
         .withConfig(config)
         .eventGateway();
+  }
+
+  @EventListener(ApplicationReadyEvent.class)
+  public void handle() {
+    app.start();
   }
 
 }
