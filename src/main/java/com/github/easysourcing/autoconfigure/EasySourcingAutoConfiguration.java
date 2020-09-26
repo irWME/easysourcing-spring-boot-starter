@@ -4,6 +4,7 @@ import com.github.easysourcing.Config;
 import com.github.easysourcing.EasySourcing;
 import com.github.easysourcing.EasySourcingBuilder;
 import com.github.easysourcing.GatewayBuilder;
+import com.github.easysourcing.messages.MessageGateway;
 import com.github.easysourcing.messages.commands.CommandGateway;
 import com.github.easysourcing.messages.events.EventGateway;
 import lombok.extern.slf4j.Slf4j;
@@ -50,6 +51,13 @@ public class EasySourcingAutoConfiguration {
   @Bean
   public EasySourcing easySourcing(EasySourcingBuilder easySourcingBuilder) {
     return easySourcingBuilder.build();
+  }
+
+  @Bean
+  public MessageGateway messageGateway(Config config) {
+    return new GatewayBuilder()
+        .withConfig(config)
+        .messageGateway();
   }
 
   @Bean
