@@ -6,13 +6,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 @ConfigurationProperties(prefix = "easysourcing")
 public class EasySourcingProperties {
-  private String applicationId;
   private String bootstrapServers;
-  private int partitions = 1;
+  private String applicationId;
   private int replicas = 1;
+  private int partitions = 1;
   private String securityProtocol = "PLAINTEXT";
-  private boolean frequentCommits = false;
-  private boolean isDeleteLocalStateOnStartup = false;
+  private boolean rebuildLocalState = false;
 
   private long commandsRetention = 604800000; // 7 days
   private long resultsRetention = 604800000; // 7 days

@@ -27,8 +27,7 @@ public class EasySourcingAutoConfiguration {
         .replicas(easySourcingProperties.getReplicas())
         .partitions(easySourcingProperties.getPartitions())
         .securityProtocol(easySourcingProperties.getSecurityProtocol())
-        .frequentCommits(easySourcingProperties.isFrequentCommits())
-        .deleteLocalStateOnStartup(easySourcingProperties.isDeleteLocalStateOnStartup())
+        .rebuildLocalState(easySourcingProperties.isRebuildLocalState())
 
         .commandsRetention(easySourcingProperties.getCommandsRetention())
         .resultsRetention(easySourcingProperties.getResultsRetention())
