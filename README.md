@@ -1,4 +1,4 @@
-## Spring Boot starter for EasySourcing
+## EasySourcing Spring Boot Starter
 
 [Documentation](https://alikelleci.github.io/easysourcing)
 
