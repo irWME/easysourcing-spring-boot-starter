@@ -6,12 +6,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>2.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.alikelleci</groupId>
     <artifactId>easysourcing-spring-boot-starter</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>easysourcing-spring-boot-starter</name>
     <description>Spring Boot starter for EasySourcing library</description>
 
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>com.github.alikelleci</groupId>
             <artifactId>easysourcing</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
