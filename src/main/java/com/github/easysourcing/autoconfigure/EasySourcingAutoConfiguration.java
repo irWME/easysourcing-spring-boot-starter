@@ -24,7 +24,7 @@ import org.springframework.context.event.EventListener;
 @EnableConfigurationProperties(EasySourcingProperties.class)
 public class EasySourcingAutoConfiguration {
 
-  private ApplicationEventPublisher eventPublisher;
+  private final ApplicationEventPublisher eventPublisher;
 
   @Autowired
   public EasySourcingAutoConfiguration(ApplicationEventPublisher eventPublisher) {
