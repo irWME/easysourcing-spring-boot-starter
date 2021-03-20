@@ -4,12 +4,17 @@ import com.github.easysourcing.Config;
 import com.github.easysourcing.EasySourcing;
 import com.github.easysourcing.EasySourcingBuilder;
 import com.github.easysourcing.GatewayBuilder;
+import com.github.easysourcing.autoconfigure.events.EasySourcingStateChangedEvent;
+import com.github.easysourcing.autoconfigure.events.EasySourcingUncaughtExceptionEvent;
 import com.github.easysourcing.messages.MessageGateway;
 import com.github.easysourcing.messages.commands.CommandGateway;
 import com.github.easysourcing.messages.events.EventGateway;
+import com.github.easysourcing.messages.snapshots.SnapshotGateway;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
@@ -18,6 +23,13 @@ import org.springframework.context.event.EventListener;
 @Configuration
 @EnableConfigurationProperties(EasySourcingProperties.class)
 public class EasySourcingAutoConfiguration {
+
+  private ApplicationEventPublisher eventPublisher;
+
+  @Autowired
+  public EasySourcingAutoConfiguration(ApplicationEventPublisher eventPublisher) {
+    this.eventPublisher = eventPublisher;
+  }
 
   @Bean
   public Config config(EasySourcingProperties easySourcingProperties) {
@@ -40,7 +52,17 @@ public class EasySourcingAutoConfiguration {
   @Bean
   public EasySourcingBuilder easySourcingBuilder(Config config) {
     return new EasySourcingBuilder()
-        .withConfig(config);
+        .withConfig(config)
+        .withStateListener((newState, oldState) ->
+            eventPublisher.publishEvent(EasySourcingStateChangedEvent.builder()
+                .newState(newState)
+                .oldState(oldState)
+                .build()))
+        .withUncaughtExceptionHandler((thread, throwable) ->
+            eventPublisher.publishEvent(EasySourcingUncaughtExceptionEvent.builder()
+                .thread(thread)
+                .throwable(throwable)
+                .build()));
   }
 
   @Bean
@@ -72,6 +94,13 @@ public class EasySourcingAutoConfiguration {
     return new GatewayBuilder()
         .withConfig(config)
         .eventGateway();
+  }
+
+  @Bean
+  public SnapshotGateway snapshotGateway(Config config) {
+    return new GatewayBuilder()
+        .withConfig(config)
+        .snapshotGateway();
   }
 
   @EventListener
