@@ -38,6 +38,7 @@ public class EasySourcingAutoConfiguration {
         .applicationId(easySourcingProperties.getApplicationId())
         .replicas(easySourcingProperties.getReplicas())
         .partitions(easySourcingProperties.getPartitions())
+        .stateDir(easySourcingProperties.getStateDir())
         .securityProtocol(easySourcingProperties.getSecurityProtocol())
         .rebuildLocalState(easySourcingProperties.isRebuildLocalState())
         .inMemoryStateStore(easySourcingProperties.isInMemoryStateStore())
