@@ -12,6 +12,7 @@ public class EasySourcingProperties {
   private int partitions = 1;
   private String stateDir = "/tmp/kafka-streams";
   private String securityProtocol = "PLAINTEXT";
+
   private boolean rebuildLocalState = false;
   private boolean inMemoryStateStore = false;
 
