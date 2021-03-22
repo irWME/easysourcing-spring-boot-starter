@@ -8,9 +8,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class EasySourcingProperties {
   private String bootstrapServers;
   private String applicationId;
-  private int replicas = 1;
   private int partitions = 1;
+  private int replicas = 1;
+  private int standByReplicas = 0;
   private String stateDir = "/tmp/kafka-streams";
+  private String producerCompressionType = "none";
   private String securityProtocol = "PLAINTEXT";
 
   private boolean rebuildLocalState = false;
