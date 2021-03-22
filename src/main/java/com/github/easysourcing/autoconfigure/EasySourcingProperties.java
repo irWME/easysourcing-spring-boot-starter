@@ -11,6 +11,7 @@ public class EasySourcingProperties {
   private int replicas = 1;
   private int partitions = 1;
   private String stateDir = "/tmp/kafka-streams";
+  private String producerCompressionType = "none";
   private String securityProtocol = "PLAINTEXT";
 
   private boolean rebuildLocalState = false;

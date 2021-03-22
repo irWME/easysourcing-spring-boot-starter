@@ -39,6 +39,7 @@ public class EasySourcingAutoConfiguration {
         .replicas(easySourcingProperties.getReplicas())
         .partitions(easySourcingProperties.getPartitions())
         .stateDir(easySourcingProperties.getStateDir())
+        .producerCompressionType(easySourcingProperties.getProducerCompressionType())
         .securityProtocol(easySourcingProperties.getSecurityProtocol())
 
         .rebuildLocalState(easySourcingProperties.isRebuildLocalState())
