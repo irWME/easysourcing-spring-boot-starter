@@ -42,8 +42,6 @@ public class EasySourcingAutoConfiguration {
         .stateDir(easySourcingProperties.getStateDir())
         .producerCompressionType(easySourcingProperties.getProducerCompressionType())
         .securityProtocol(easySourcingProperties.getSecurityProtocol())
-
-        .rebuildLocalState(easySourcingProperties.isRebuildLocalState())
         .inMemoryStateStore(easySourcingProperties.isInMemoryStateStore())
 
         .commandsRetention(easySourcingProperties.getCommandsRetention())

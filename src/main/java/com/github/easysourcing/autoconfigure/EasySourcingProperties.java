@@ -14,8 +14,6 @@ public class EasySourcingProperties {
   private String stateDir = "/tmp/kafka-streams";
   private String producerCompressionType = "none";
   private String securityProtocol = "PLAINTEXT";
-
-  private boolean rebuildLocalState = false;
   private boolean inMemoryStateStore = false;
 
   private long commandsRetention = 604800000; // 7 days
