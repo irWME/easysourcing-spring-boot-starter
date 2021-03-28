@@ -9,12 +9,12 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import java.lang.reflect.Method;
 import java.util.List;
 
-public class EasySourcingHandlerBeanPostProcessor implements BeanPostProcessor {
+public class EasySourcingBeanPostProcessor implements BeanPostProcessor {
 
   private final EasySourcingBuilder builder;
 
-  public EasySourcingHandlerBeanPostProcessor(EasySourcingBuilder builder) {
-    this.builder = builder;
+  public EasySourcingBeanPostProcessor(EasySourcingBuilder easySourcingBuilder) {
+    this.builder = easySourcingBuilder;
   }
 
   @Override

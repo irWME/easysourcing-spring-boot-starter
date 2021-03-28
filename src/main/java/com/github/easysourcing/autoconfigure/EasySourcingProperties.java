@@ -6,18 +6,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 @ConfigurationProperties(prefix = "easysourcing")
 public class EasySourcingProperties {
-  private String bootstrapServers;
-  private String applicationId;
-  private int partitions = 1;
-  private int replicas = 1;
-  private int standByReplicas = 0;
-  private String stateDir = "/tmp/kafka-streams";
-  private String producerCompressionType = "none";
-  private String securityProtocol = "PLAINTEXT";
-  private boolean inMemoryStateStore = false;
-
-  private long commandsRetention = 604800000; // 7 days
-  private long resultsRetention = 604800000; // 7 days
-  private long snapshotsRetention = 86400000; // 1 day
-  private long eventsRetention = -1; // infinite
+//  private String bootstrapServers;
+//  private String applicationId;
 }
